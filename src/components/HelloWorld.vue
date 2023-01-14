@@ -36,7 +36,7 @@
   export default{
     data() {
       return {
-        totalDataNum: tableData.length,
+        totalDataNum: 0,
         tableDataShown: [],
         curPage: 1,
         pageSize: 15,
@@ -54,6 +54,7 @@
       }
     },
     created() {
+      this.totalDataNum = tableData.filter(item => item.tag_type.indexOf(this.option) != -1).length
       this.tableDataShown = tableData.slice((this.curPage - 1) * this.pageSize, this.curPage * this.pageSize)
     },
     methods: {
